@@ -5,6 +5,7 @@ frontend/build/
 # backend
 backend/venv/
 backend/__pycache__/
+backend/uploads/
 
 # misc
 .env
