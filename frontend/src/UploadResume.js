@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function UploadResume() {
+  const [analysis, setAnalysis] = useState(null)
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
 
@@ -24,6 +25,7 @@ function UploadResume() {
       });
       const data = await response.json();
       setMessage(data.message);
+      setAnalysis(data.analysis);
     } catch (err) {
       setMessage("Upload failed!");
     }
@@ -36,6 +38,15 @@ function UploadResume() {
       <button onClick={handleUpload} style={{ marginLeft: "10px" }}>
         Upload
       </button>
+
+  {analysis && (
+    <div style={{ marginTop: "20px" }}>
+    <h3>Resume Analysis</h3>
+    <p><b>Word Count:</b> {analysis.word_count}</p>
+    <p><b>Skills Found:</b> {analysis.skills_found.join(", ") || "None"}</p>
+  </div>
+)}
+
       <p>{message}</p>
     </div>
   );
