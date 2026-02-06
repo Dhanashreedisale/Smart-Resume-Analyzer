@@ -9,3 +9,6 @@ backend/uploads/
 
 # misc
 .env
+node_modules/
+.env.local
+*.pyc
